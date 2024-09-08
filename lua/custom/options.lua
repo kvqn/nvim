@@ -1,5 +1,5 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = ','
+vim.g.maplocalleader = ','
 
 vim.g.have_nerd_font = true
 
@@ -113,3 +113,5 @@ vim.api.nvim_create_autocmd('ExitPre', {
   command = 'set guicursor=a:ver90',
   desc = 'Set cursor back to beam when leaving Neovim.',
 })
+
+vim.keymap.set('n', '<leader>v', '<Cmd>Explore<CR>', { desc = 'Move focus to the upper window' })
