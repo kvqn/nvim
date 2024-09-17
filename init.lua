@@ -423,7 +423,7 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 1500,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
@@ -433,6 +433,11 @@ require('lazy').setup({
         zsh = { 'shfmt' },
         -- Conform can also run multiple formatters sequentially
         python = { 'isort', 'ruff' },
+        typescript = { 'prettier' },
+        javascript = { 'prettier' },
+        typescriptreact = { 'prettier' },
+        javascriptreact = { 'prettier' },
+        json = { 'prettier' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
@@ -440,6 +445,10 @@ require('lazy').setup({
       formatters = {
         ruff = {
           command = 'ruff format',
+        },
+        prettier = {
+          command = 'bunx',
+          args = { 'prettier', '--stdin-filepath', '$FILENAME' },
         },
       },
     },
