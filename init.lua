@@ -438,17 +438,24 @@ require('lazy').setup({
         typescriptreact = { 'prettier' },
         javascriptreact = { 'prettier' },
         json = { 'prettier' },
+        cpp = { 'clang-format' },
+        java = { 'clang-format' },
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         -- javascript = { "prettierd", "prettier", stop_after_first = true },
       },
       formatters = {
         ruff = {
-          command = 'ruff format',
+          command = 'ruff',
+          args = { 'format', '--stdin-filename', '$FILENAME' },
         },
         prettier = {
           command = 'bunx',
           args = { 'prettier', '--stdin-filepath', '$FILENAME' },
+        },
+        ['clang-format'] = {
+          command = 'clang-format',
+          args = { '--style', 'Microsoft' },
         },
       },
     },
